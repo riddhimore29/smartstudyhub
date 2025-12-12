@@ -3,12 +3,12 @@ from flask_cors import CORS
 import concurrent.futures
 
 # Import providers
-from providers.wikipedia import fetch_wikipedia
-from providers.duckduckgo import fetch_duckduckgo
-from providers.piped import fetch_piped
+from backend.providers.wikipedia import fetch_wikipedia
+from backend.providers.duckduckgo import fetch_duckduckgo
+from backend.providers.piped import fetch_piped
 
 # Import ranking logic
-from ranking import rank_resources
+from backend.ranking import rank_resources
 
 app = Flask(__name__, static_folder="../frontend", static_url_path="")
 CORS(app) # Enable CORS for all routes
