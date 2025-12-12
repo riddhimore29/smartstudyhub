@@ -85,7 +85,10 @@ async function fetchResources(query, filter) {
         }
 
         // Render Items
+        console.log('Rendering results:', data.results.length, 'items');
+        console.log('Results:', data.results);
         data.results.forEach((item, index) => {
+            console.log(`Rendering item ${index}:`, item.title, item.source);
             container.appendChild(createResponsiveCard(item, index));
         });
 
