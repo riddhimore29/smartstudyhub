@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" class="snap-scroll">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartStudyHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/style.css?v=2">
+</head>
+
+<body>
+    <!-- Navbar (Minimal) -->
+    <nav class="fixed top-0 w-full p-6 z-50 flex justify-between items-center glass-nav border-b border-white/5">
+        <div class="font-bold text-xl tracking-tight text-white flex items-center gap-2">
+            <div class="w-2 h-2 bg-indigo-500 rounded-full"></div> SmartStudyHub
+        </div>
+        <a href="https://github.com/yourusername/study-finder" target="_blank"
+            class="text-slate-500 hover:text-white transition">
+            <i class="fa-brands fa-github text-xl"></i>
+        </a>
+    </nav>
+
+    <!-- Background Grid & Blobs -->
+    <div class="hero-gradient">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <!-- SECTION 1: HERO (Search First) -->
+    <section class="chapter active" id="sec1">
+        <div class="w-full max-w-5xl px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-center fade-in-up">
+
+            <!-- Left: Text & Search -->
+            <div class="md:col-span-8 md:col-start-3 text-center">
+                <div
+                    class="inline-block px-3 py-1 mb-6 text-xs font-mono text-indigo-400 border border-indigo-500/20 rounded-full bg-indigo-500/5">
+                    INTELLIGENT RESOURCE FINDER
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight tracking-tight">
+                    Search less. <br>
+                    <span class="text-slate-500">Learn more.</span>
+                </h1>
+
+                <p class="text-xl text-slate-400 mb-10 max-w-xl mx-auto font-light leading-relaxed">
+                    Access curated videos, articles, and papers from trusted sources.
+                    <span class="text-slate-300">No ads. No clutter.</span>
+                </p>
+
+                <!-- Search Bar -->
+                <div class="w-full max-w-2xl mx-auto relative group mb-8">
+                    <div
+                        class="relative flex items-center bg-[#0a0a0a] border border-white/10 rounded-full p-2 focus-within:border-indigo-500 transition-colors shadow-2xl">
+                        <div class="pl-4 text-slate-500">
+                            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                        </div>
+                        <input type="text" id="landing-search"
+                            class="w-full py-3 px-4 text-lg bg-transparent outline-none text-white placeholder:text-slate-600 font-medium font-sans"
+                            placeholder="What do you want to learn?">
+
+                        <button onclick="performSearch()"
+                            class="bg-white hover:bg-slate-200 text-black px-6 py-3 rounded-full font-bold transition-all flex items-center gap-2">
+                            Search
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chips -->
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button onclick="quickSearch('Machine Learning')"
+                        class="pill-btn px-4 py-1.5 rounded-full text-xs font-medium border border-white/10 text-slate-500 hover:text-white hover:border-white/20 hover:bg-white/5 transition">Machine
+                        Learning</button>
+                    <button onclick="quickSearch('Calculus')"
+                        class="pill-btn px-4 py-1.5 rounded-full text-xs font-medium border border-white/10 text-slate-500 hover:text-white hover:border-white/20 hover:bg-white/5 transition">Calculus</button>
+                    <button onclick="quickSearch('French Revolution')"
+                        class="pill-btn px-4 py-1.5 rounded-full text-xs font-medium border border-white/10 text-slate-500 hover:text-white hover:border-white/20 hover:bg-white/5 transition">History</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="absolute bottom-10 animate-pulse text-slate-800">
+            <i class="fa-solid fa-arrow-down"></i>
+        </div>
+    </section>
+
+    <!-- SECTION 2: THE PROBLEM -->
+    <section class="chapter" id="sec2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl px-6 w-full items-center fade-in-up">
+            <div class="text-left">
+                <h2 class="text-4xl font-bold text-white mb-4">The internet is loud.</h2>
+                <div class="h-1 w-20 bg-indigo-500 mb-6"></div>
+                <p class="text-xl text-slate-400 leading-relaxed font-light mb-8">
+                    Searching for study materials means dodging clickbait, ads, and outdated content. <br
+                        class="hidden md:block">
+                    It takes longer to find a good resource than to actually learn from it.
+                </p>
+
+                <div class="flex items-center gap-4 text-slate-500 font-mono text-sm">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-xmark text-red-500"></i> No Ads
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-xmark text-red-500"></i> No Clickbait
+                    </span>
+                </div>
+            </div>
+
+            <!-- Chaos Visual / 404 Card -->
+            <div
+                class="relative h-80 border border-white/10 rounded-2xl bg-[#0a0a0a] flex items-center justify-center overflow-hidden shadow-2xl group">
+                <!-- Background Grid inside card -->
+                <div class="absolute inset-0 opacity-20"
+                    style="background-image: radial-gradient(#333 1px, transparent 1px); background-size: 20px 20px;">
+                </div>
+
+                <!-- Floating Icons (The Noise) -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <i class="fa-brands fa-youtube floating-icon text-red-500 text-5xl top-10 right-10 delay-100"></i>
+                    <i class="fa-brands fa-google floating-icon text-blue-500 text-4xl bottom-20 left-10 delay-200"></i>
+                    <i
+                        class="fa-brands fa-wikipedia-w floating-icon text-gray-500 text-6xl top-1/2 left-1/4 delay-300 blur-[1px]"></i>
+                    <i class="fa-solid fa-file-pdf floating-icon text-orange-500 text-4xl top-10 left-10 delay-500"></i>
+                    <i
+                        class="fa-solid fa-bullhorn floating-icon text-yellow-500 text-5xl bottom-10 right-20 delay-100 blur-[2px]"></i>
+                </div>
+
+                <!-- 404 Badge -->
+                <div
+                    class="z-10 bg-black/80 backdrop-blur-md px-8 py-4 rounded-full border border-red-500/30 text-red-400 font-mono text-sm shadow-[0_0_30px_rgba(239,68,68,0.2)] group-hover:scale-105 transition duration-500 flex items-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+                    Error 404: Clarity Not Found
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: THE SOLUTION -->
+    <section class="chapter" id="sec3">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl px-6 w-full items-center fade-in-up">
+            <!-- Clean Visual -->
+            <div
+                class="order-2 md:order-1 relative h-80 border border-white/10 rounded-2xl bg-[#0a0a0a] flex flex-col items-center justify-center gap-6 shadow-2xl group">
+                <div class="flex gap-2 group-hover:translate-x-2 transition duration-500">
+                    <div class="w-32 h-3 bg-white/10 rounded-full"></div>
+                    <div class="w-12 h-3 bg-indigo-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
+                </div>
+                <div class="flex gap-2 group-hover:-translate-x-2 transition duration-500">
+                    <div class="w-12 h-3 bg-white/10 rounded-full"></div>
+                    <div class="w-40 h-3 bg-white/10 rounded-full"></div>
+                </div>
+
+                <div
+                    class="mt-8 text-emerald-400 font-mono text-sm border border-emerald-500/30 px-4 py-2 rounded bg-emerald-500/10 flex items-center gap-2">
+                    <i class="fa-solid fa-check text-xs"></i> Ranked: Top 1%
+                </div>
+            </div>
+
+            <div class="text-left order-1 md:order-2">
+                <h2 class="text-4xl font-bold text-white mb-4">We filter the noise.</h2>
+                <div class="h-1 w-20 bg-emerald-500 mb-6"></div>
+                <p class="text-xl text-slate-400 leading-relaxed font-light mb-8">
+                    Our ranking algorithm scans thousands of sources to bring you only the highest-quality videos,
+                    articles, and papers.
+                </p>
+
+                <div class="flex gap-4">
+                    <div class="text-center">
+                        <div class="font-bold text-2xl text-white">3+</div>
+                        <div class="text-[10px] text-slate-500 uppercase tracking-widest">Sources</div>
+                    </div>
+                    <div class="w-px h-10 bg-white/10"></div>
+                    <div class="text-center">
+                        <div class="font-bold text-2xl text-white">100%</div>
+                        <div class="text-[10px] text-slate-500 uppercase tracking-widest">Free</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: FOOTER -->
+    <section class="chapter min-h-[40vh] border-t border-white/5" id="sec4">
+        <div class="text-center w-full fade-in-up">
+            <h2 class="text-3xl font-bold text-white mb-8">Start your journey.</h2>
+
+            <button onclick="document.getElementById('sec1').scrollIntoView({behavior: 'smooth'})"
+                class="bg-indigo-600 hover:bg-indigo-500 text-white px-10 py-4 text-lg rounded-full font-bold transition-all shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_40px_rgba(99,102,241,0.5)]">
+                Launch Search
+            </button>
+
+            <div class="mt-20 text-slate-700 text-xs font-mono">
+                &copy; 2025 SmartStudyHub. Built for students.
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll Observer Script -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.chapter').forEach(el => observer.observe(el));
+
+        function performSearch() {
+            const query = document.getElementById('landing-search').value.trim();
+            if (query) window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+        }
+        function quickSearch(q) {
+            window.location.href = `search.html?q=${encodeURIComponent(q)}`;
+        }
+    </script>
+</body>
+
+</html>

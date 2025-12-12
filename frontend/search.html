@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - SmartStudyHub</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex flex-col bg-black text-white">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 glass-nav">
+        <div class="container mx-auto px-4 md:px-6 py-4 flex flex-col md:flex-row items-center gap-4 justify-between">
+            <!-- Logo -->
+            <a href="/" class="flex-shrink-0 flex items-center gap-2 group">
+                <div
+                    class="w-9 h-9 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center text-white shadow-[0_0_15px_rgba(99,102,241,0.5)] group-hover:scale-110 transition shrink-0">
+                    <i class="fa-solid fa-graduation-cap text-sm"></i>
+                </div>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="w-full max-w-2xl relative group">
+                <input type="text" id="search-input"
+                    class="w-full pl-11 pr-4 py-3 rounded-full search-input-wrapper outline-none text-sm font-medium transition shadow-sm placeholder:text-slate-600 text-white"
+                    placeholder="Search again...">
+                <i
+                    class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-500 group-focus-within:text-indigo-400 transition"></i>
+            </div>
+
+            <!-- Empty Div for balance -->
+            <div class="hidden md:block w-9"></div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="border-t border-white/5 bg-black/40 backdrop-blur-sm">
+            <div class="container mx-auto px-4 md:px-6 py-3 flex gap-3 no-scrollbar overflow-x-auto" id="filters">
+                <button onclick="setFilter('all')"
+                    class="pill-btn active px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide">
+                    All
+                </button>
+                <div class="w-px h-6 bg-white/10 mx-1"></div>
+                <button onclick="setFilter('quick')" class="pill-btn px-4 py-1.5 rounded-full text-xs font-semibold">
+                    Quick
+                </button>
+                <button onclick="setFilter('deep')" class="pill-btn px-4 py-1.5 rounded-full text-xs font-semibold">
+                    Deep Dive
+                </button>
+                <div class="w-px h-6 bg-white/10 mx-1"></div>
+                <button onclick="setFilter('video')" class="pill-btn px-4 py-1.5 rounded-full text-xs font-semibold">
+                    Videos
+                </button>
+                <button onclick="setFilter('article')" class="pill-btn px-4 py-1.5 rounded-full text-xs font-semibold">
+                    Articles
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 md:px-6 py-8 relative max-w-5xl">
+
+        <!-- Header -->
+        <div class="mb-8 flex items-end justify-between">
+            <h1 class="text-2xl font-bold text-slate-100">
+                Results for "<span id="query-display" class="text-indigo-400">...</span>"
+            </h1>
+            <span class="text-xs text-slate-500 uppercase tracking-widest font-semibold hidden md:inline-block">AI
+                Ranked • Premium Sources</span>
+        </div>
+
+        <!-- Results Container -->
+        <div id="results-container" class="grid grid-cols-1 gap-6 pb-20">
+            <!-- Loading State -->
+            <div id="loader" class="space-y-6">
+                <div class="h-48 glass-card rounded-2xl animate-pulse bg-slate-800/50 border-white/5"></div>
+                <div class="h-32 glass-card rounded-2xl animate-pulse bg-slate-800/50 border-white/5"></div>
+                <div class="h-32 glass-card rounded-2xl animate-pulse bg-slate-800/50 border-white/5"></div>
+            </div>
+
+            <!-- Error State -->
+            <div id="error-state"
+                class="hidden text-center py-20 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm">
+                <div
+                    class="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4 text-red-500 text-3xl shadow-sm">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-200">No results found</h3>
+                <p class="text-slate-500 text-sm mt-1">We couldn't find any resources matching your search.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="/assets/script.js?v=3"></script>
+</body>
+
+</html>
